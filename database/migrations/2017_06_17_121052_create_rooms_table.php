@@ -17,12 +17,10 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->integer('hotel_id'); // create a db that supports multiple hotels
             $table->string('room_number'); // not all hotels might use integers for the room name
-            $table->text('description');
-            $table->integer('customer_id')->nullable(); // customer may or may not be a member
+            $table->text('description'); // a custom description can be added, if not, the room type one is used
             $table->string('facing', 2); // N, NE, E, SE, etc...
             $table->decimal('sqm', 7, 2); // square meters
-            $table->boolean('paid')->default(0);
-            $table->boolean('smoking')->default(0);
+            $table->boolean('smoking')->nullable(); // smoking can be overrided here, if not, room type is used
             $table->timestamps();
         });
     }

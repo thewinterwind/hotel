@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\PersonalIdType;
+use App\Models\Hotel;
 
-class PersonalIdTypesTableSeeder extends Seeder
+class BookingTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,17 +12,17 @@ class PersonalIdTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        $personalIdTypes = [
+        $hotels = [
             [
                 'id' => 1,
-                'name' => 'passport',
+                'name' => 'Ibiza Motel',
             ],
             [
                 'id' => 2,
-                'name' => 'dl', // driver's license
+                'name' => 'Hotel California',
             ]
         ];
 
-        PersonalIdType::insert($personalIdTypes);
+        Hotel::insert($hotels);
     }
 }
