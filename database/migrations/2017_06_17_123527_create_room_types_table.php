@@ -17,6 +17,7 @@ class CreateRoomTypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('sqm');
+            $table->integer('rate');
             $table->text('description');
             $table->timestamps();
         });

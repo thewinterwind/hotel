@@ -24,7 +24,7 @@ class BookingRepo {
             foreach ($bookings as $booking) {
                 $formatted[] = [
                     'id' => $booking->id,
-                    'name' => $booking->room->room_number . ' Booking',
+                    'name' => $booking->room->room_number . ' (' . $booking->rate . config('app.currency') . ')',
                     'startdate' => $booking->start_date->format('Y-m-d'),
                     // checkout date is on the following day but it doesn't add a day to the booking, subtract one day
                     'enddate' => $booking->checkout_date->subDay()->format('Y-m-d'),
