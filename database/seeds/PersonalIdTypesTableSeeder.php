@@ -23,6 +23,8 @@ class PersonalIdTypesTableSeeder extends Seeder
             ]
         ];
 
-        PersonalIdType::insert($personalIdTypes);
+        foreach ($personalIdTypes as $type) {
+            PersonalIdType::create($type);
+        }
     }
 }

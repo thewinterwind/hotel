@@ -20,6 +20,6 @@ class RoomType extends Eloquent
      */
     public function bookings()
     {
-        return $this->hasMany('App\Room');
+        return $this->hasMany('App\Models\Room');
     }
 }

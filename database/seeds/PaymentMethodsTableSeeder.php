@@ -15,14 +15,16 @@ class PaymentMethodsTableSeeder extends Seeder
         $paymentMethods = [
             [
                 'id' => 1,
-                'method' => 'credit_card',
+                'name' => 'credit_card',
             ],
             [
                 'id' => 2,
-                'room_id' => 'cash',
+                'name' => 'cash',
             ]
         ];
 
-        PaymentMethod::insert($paymentMethods);
+        foreach ($paymentMethods as $method) {
+            PaymentMethod::create($method);
+        }
     }
 }

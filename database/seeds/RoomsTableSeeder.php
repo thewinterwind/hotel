@@ -18,20 +18,45 @@ class RoomsTableSeeder extends Seeder
                 'hotel_id' => 1,
                 'room_number' => '101',
                 'room_type_id' => 1,
-                'facing' => 'E',
-                'sqm' => '200',
+                'direction' => 'E',
+                'sqm' => '100',
                 'smoking' => true,
+                'calendar_color' => '#A52A2A',
             ],
             [
-                'id' => 1,
+                'id' => 2,
                 'hotel_id' => 1,
                 'room_number' => '102',
                 'room_type_id' => 2,
-                'facing' => 'S',
+                'direction' => 'S',
                 'sqm' => '150',
+                'smoking' => false,
+                'calendar_color' => '#8A2BE2',
+            ],
+            [
+                'id' => 3,
+                'hotel_id' => 1,
+                'room_number' => '201',
+                'room_type_id' => 3,
+                'direction' => 'S',
+                'sqm' => '200',
+                'smoking' => false,
+                'calendar_color' => '#6495ED',
+            ],
+            [
+                'id' => 4,
+                'hotel_id' => 1,
+                'room_number' => '301',
+                'room_type_id' => 4,
+                'direction' => 'S',
+                'sqm' => '250',
+                'smoking' => false,
+                'calendar_color' => '#006400',
             ]
         ];
 
-        Room::insert($rooms);
+        foreach ($rooms as $room) {
+            Room::create($room);
+        }
     }
 }

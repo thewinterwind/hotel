@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Hotel;
 
-class BookingTableSeeder extends Seeder
+class HotelTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,13 +16,19 @@ class BookingTableSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'Ibiza Motel',
+                'check_in_time' => '12:00',
+                'check_out_time' => '11:00',
             ],
             [
                 'id' => 2,
                 'name' => 'Hotel California',
+                'check_in_time' => '11:30',
+                'check_out_time' => '10:30',
             ]
         ];
 
-        Hotel::insert($hotels);
+        foreach ($hotels as $hotel) {
+            Hotel::create($hotel);
+        }
     }
 }

@@ -20,7 +20,7 @@ class Room extends Eloquent
      */
     public function roomTypes()
     {
-        return $this->hasOne('App\RoomType');
+        return $this->hasOne('App\Models\RoomType');
     }
 
     /**
@@ -28,7 +28,7 @@ class Room extends Eloquent
      */
     public function bookings()
     {
-        return $this->hasMany('App\Booking');
+        return $this->hasMany('App\Models\Booking');
     }
 
     /**
@@ -36,6 +36,6 @@ class Room extends Eloquent
      */
     public function hotel()
     {
-        return $this->belongsTo('App\Hotel');
+        return $this->belongsTo('App\Models\Hotel');
     }
 }

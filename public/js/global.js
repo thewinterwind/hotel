@@ -3,7 +3,7 @@ $(window).load(function() {
         weekStart: 'Mon',
         // mode: 'picker',
         dataType: 'json',
-        jsonUrl: 'inventory.json',
+        jsonUrl: 'bookings',
         eventList: false,
         disablePast: true
     });
