@@ -22,6 +22,86 @@ class InventoryRepo {
     }
 
     /**
+     * Get the rate/availability information for a single room on a specific date
+     * 
+     * @param $date string
+     * @param $roomId integer
+     * @return array
+     */
+    public function find(string $date, int $roomId)
+    {
+        $available = !$this->unavailableRoom->where([
+            'room_id' => $roomId,
+            'date' => $date,
+        ])->exists();
+
+        $customRate = $this->rate->where([
+            'room_id' => $roomId,
+            'date' => $date,
+        ])->first();
+
+        $room = $this->room->join('room_types', 'room_type_id', '=', 'room_types.id')
+                ->where('rooms.id', $roomId)
+                ->first();
+
+        if ($customRate) {
+            $rate = $customRate->rate;
+        } else {
+            $rate = $room->rate;
+        }
+
+        return [
+            'room_id' => $roomId,
+            'number' => $room->room_number,
+            'date' => $date,
+            'available' => $available,
+            'rate' => $rate,
+        ];
+    }
+
+    /**
+     * Update room on a specific date
+     * 
+     * @param $roomId int
+     * @param $rate int
+     * @param $date string
+     * @param $available bool
+     * @return null
+     */
+    public function updateRoomOnSpecificDate(int $roomId, int $rate, string $date, bool $available)
+    {
+        $this->unavailableRoom->where([
+            'date' => $date,
+            'room_id' => $roomId,
+        ])->delete();
+
+        if (!$available) {
+            $this->unavailableRoom->create([
+                'date' => $date,
+                'room_id' => $roomId,
+            ]);
+        }
+
+        $this->rate->where([
+            'date' => $date,
+            'room_id' => $roomId,
+        ])->delete();
+
+        $room = $this->room->join('room_types', 'rooms.room_type_id', '=', 'room_types.id')
+            ->where('rooms.id', $roomId)
+            ->first();
+
+        // if the rate passed in is different than the default room rate, then add it as a custom rate
+        if ($rate !== $room->rate) {
+            $this->rate->create([
+                'date' => $date,
+                'room_id' => $roomId,
+                'rate' => $rate,
+            ]);
+        }
+    }
+
+    /**
      * Update multiple days of inventory at once
      * 
      * @param $data array
@@ -42,8 +122,6 @@ class InventoryRepo {
             }
         }
 
-        Log::info($datesToUpdate);
-
         // if they wanted to update the availability of rooms, first delete all rooms in the date range
         if ($data['available'] !== null) {
             $this->unavailableRoom
@@ -56,9 +134,6 @@ class InventoryRepo {
         // if they chose to add unavailability to rooms, we add those here
         // if they set available equal to 1, we have already handled that in the deletion above by removing them
         // from the unavailable table, hence making them available again
-
-        Log::info($data['available']);
-
         if ($data['available'] === '0') {
             $unavailableRooms = [];
 
@@ -72,8 +147,6 @@ class InventoryRepo {
                     ];
                 }
             }
-
-            Log::info($unavailableRooms);
 
             $this->unavailableRoom->insert($unavailableRooms);
         }
@@ -111,9 +184,9 @@ class InventoryRepo {
      */
     public function get()
     {
-        $sixMonthsAgo = (new DateTime('-6 months'))->format('Y-m-d');
+        $today = date('Y-m-d');
         $sixMonthsAhead = (new DateTime('+6 months'))->format('Y-m-d');
-        $dates = $this->date->getDatesWithinRange('-6 months', '+6 months');
+        $dates = $this->date->getDatesWithinRange('now', '+6 months');
         $unavailableRoomsByDate = [];
         $customRates = [];
         $rooms = $this->room->select([
@@ -125,7 +198,7 @@ class InventoryRepo {
 
         $results = $this->unavailableRoom
             ->select('room_id', 'date')
-            ->where('date', '>=', $sixMonthsAgo)
+            ->where('date', '>=', $today)
             ->where('date', '<', $sixMonthsAhead)
             ->get();
 
@@ -139,7 +212,7 @@ class InventoryRepo {
 
         $results = $this->rate
             ->select('room_id', 'date', 'rate')
-            ->where('date', '>=', $sixMonthsAgo)
+            ->where('date', '>=', $today)
             ->where('date', '<', $sixMonthsAhead)
             ->get();
 
@@ -165,7 +238,7 @@ class InventoryRepo {
                 $rate = $customRates[$date][$room->id] ?? $room->rate;
 
                 $formatted[] = [
-                    'id' => $date . '_' . $room->id,
+                    'id' => http_build_query(['date' => $date, 'room_id' => $room->id]),
                     'name' => $room->room_number . ' (' . $rate . config('app.currency') . ')',
                     'startdate' => $date,
                     'enddate' => $date,

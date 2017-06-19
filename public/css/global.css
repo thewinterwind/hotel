@@ -1,0 +1,16 @@
+body {
+    background: #2471A3;
+    background: -webkit-linear-gradient(#2471A3, #7D3C98); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#2471A3, #7D3C98); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#2471A3, #7D3C98); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#2471A3, #7D3C98); /* Standard syntax */
+}
+
+.container {
+    background-color: white;
+}
+
+h3 {
+    color: #2471A3;
+    text-shadow: 1px 1px 2px #9e9e9e;
+}

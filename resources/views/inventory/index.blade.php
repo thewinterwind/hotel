@@ -22,10 +22,10 @@
                     </div>
                     <div class="form-group">
                         <label for="from">From:</label>
-                        <input type="text" class="datepicker form-control" name="from" required>
+                        <input type="text" class="datepicker form-control" name="from" value="{{ date('Y-m-d') }}" required>
                         <br>
                         <label for="to">To:</label>
-                        <input type="text" class="datepicker form-control" name="to" required>
+                        <input type="text" class="datepicker form-control" name="to" value="{{ date('Y-m-d') }}" required>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -90,6 +90,7 @@
             <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
                 <hr>
                 <h3>Inventory Control</h3>
+                @include('partials.modal')
                 <div class="monthly" id="calendar"></div>
             </div>
         </div>

@@ -21,7 +21,7 @@ class RoomsTableSeeder extends Seeder
                 'direction' => 'E',
                 'sqm' => '100',
                 'smoking' => true,
-                'calendar_color' => '#ff0000',
+                'calendar_color' => '#7D3C98',
             ],
             [
                 'id' => 2,
@@ -29,7 +29,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '102',
                 'room_type_id' => 1,
                 'direction' => 'S',
-                'calendar_color' => '#ff8000',
+                'calendar_color' => '#2471A3',
             ],
             [
                 'id' => 3,
@@ -37,7 +37,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '103',
                 'room_type_id' => 1,
                 'direction' => 'S',
-                'calendar_color' => '#00bfff',
+                'calendar_color' => '#2E86C1',
             ],
             [
                 'id' => 4,
@@ -45,7 +45,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '104',
                 'room_type_id' => 1,
                 'direction' => 'S',
-                'calendar_color' => '#0040ff',
+                'calendar_color' => '#17A589',
             ],
             [
                 'id' => 5,
@@ -53,7 +53,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '105',
                 'room_type_id' => 1,
                 'direction' => 'S',
-                'calendar_color' => '#8000ff',
+                'calendar_color' => '#138D75',
             ],
             [
                 'id' => 6,
@@ -63,7 +63,7 @@ class RoomsTableSeeder extends Seeder
                 'direction' => 'N',
                 'sqm' => '200',
                 'smoking' => true,
-                'calendar_color' => '#bf00ff',
+                'calendar_color' => '#229954',
             ],
             [
                 'id' => 7,
@@ -71,7 +71,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '202',
                 'room_type_id' => 2,
                 'direction' => 'S',
-                'calendar_color' => '#ff0080',
+                'calendar_color' => '#D4AC0D',
             ],
             [
                 'id' => 8,
@@ -79,7 +79,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '203',
                 'room_type_id' => 2,
                 'direction' => 'N',
-                'calendar_color' => '#808080',
+                'calendar_color' => '#D68910',
             ],
             [
                 'id' => 9,
@@ -87,7 +87,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '204',
                 'room_type_id' => 2,
                 'direction' => 'S',
-                'calendar_color' => '#1a0000',
+                'calendar_color' => '#CA6F1E',
             ],
             [
                 'id' => 10,
@@ -95,7 +95,7 @@ class RoomsTableSeeder extends Seeder
                 'room_number' => '205',
                 'room_type_id' => 2,
                 'direction' => 'W',
-                'calendar_color' => '#790000',
+                'calendar_color' => '#BA4A00',
             ],
         ];
 
