@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\RateOverride;
+use App\Models\CustomRate;
 
-class RateOverridesTableSeeder extends Seeder
+class CustomRatesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,16 +12,16 @@ class RateOverridesTableSeeder extends Seeder
      */
     public function run()
     {
-        RateOverride::create([
+        CustomRate::create([
             'id' => 1,
-            'room_id' => 203,
+            'room_id' => 8,
             'rate' => 350,
             'date' => '2017-06-01',
         ]);
 
-        RateOverride::create([
+        CustomRate::create([
             'id' => 2,
-            'room_id' => 203,
+            'room_id' => 8,
             'rate' => 350,
             'date' => '2017-06-02',
         ]);

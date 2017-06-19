@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookingsTable extends Migration
+class CreateCustomRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('custom_rates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('room_id');
             $table->date('date');
             $table->integer('rate'); // in baht
-            $table->tinyInteger('paid')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bookings');
+        Schema::drop('custom_rates');
     }
 }

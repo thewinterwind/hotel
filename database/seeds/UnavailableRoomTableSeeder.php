@@ -14,7 +14,7 @@ class UnavailableRoomTableSeeder extends Seeder
     {
         UnavailableRoom::create([
             'id' => 1,
-            'room_id' => 101,
+            'room_id' => 1,
             'date' => '2017-06-30',
         ]);
     }

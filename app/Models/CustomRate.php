@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Eloquent;
 
-class RateOverride extends Eloquent
+class CustomRate extends Eloquent
 {
     /**
      * The attributes that are mass assignable.

@@ -22,7 +22,7 @@ class Booking extends Eloquent
      */
     public function room()
     {
-        return $this->belongsTo('App\Models\Room');
+        return $this->belongsTo('App\Models\Room', 'room_id', 'id');
     }
 
     /**
