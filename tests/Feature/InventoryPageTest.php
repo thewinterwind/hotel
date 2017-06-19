@@ -7,14 +7,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class InventoryPageTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Test the Inventory Page
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testInventoryPage()
     {
         $response = $this->get('/');
 

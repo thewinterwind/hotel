@@ -182,7 +182,7 @@ class InventoryRepo {
      * 
      * @return mixed
      */
-    public function get()
+    public function getInventory()
     {
         $today = date('Y-m-d');
         $sixMonthsAhead = (new DateTime('+6 months'))->format('Y-m-d');

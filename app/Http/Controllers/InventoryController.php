@@ -29,7 +29,7 @@ class InventoryController extends Controller
     public function getInventory()
     {
         return response()->json([
-            'monthly' => $this->inventory->get()
+            'monthly' => $this->inventory->getInventory()
         ]);
     }
 
