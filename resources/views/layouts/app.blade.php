@@ -23,6 +23,7 @@
             <script src="/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
             <script src="https://unpkg.com/vue@2.3.4"></script>
             <script src="/js/monthly.js"></script>
+            <script src="/vendor/notify-js/notify.min.js"></script>
             <script src="/js/global.js"></script>
         </div>
     </body>

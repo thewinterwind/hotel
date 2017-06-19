@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repos\InventoryRepo;
 use App\Repos\RoomRepo;
+use App\Helpers\RequestHelper;
 
 class InventoryController extends Controller
 {
-    public function __construct(InventoryRepo $inventory, RoomRepo $room)
+    public function __construct(InventoryRepo $inventory, RoomRepo $room, RequestHelper $requestHelper)
     {
         $this->inventory = $inventory;
         $this->room = $room;
+        $this->requestHelper = $requestHelper;
     }
 
     public function index()
@@ -35,18 +37,7 @@ class InventoryController extends Controller
             return response()->json(['error' => 'You must update either availability or the rate'], 400);
         }
 
-        $daysOfTheWeek = [];
-
-        // get the days of the week within the range that will be affected
-        foreach ($request->day_range as $range) {
-            $days = explode(',', $range);
-
-            foreach ($days as $day) {
-                if (!in_array($day, $daysOfTheWeek)) {
-                    $daysOfTheWeek[] = $day;
-                }
-            }
-        }
+        $daysOfTheWeek = $this->requestHelper->getUniqueDaysOfWeek($request->day_range);
 
         $this->inventory->multidayUpdate([
             'days' => $daysOfTheWeek,
@@ -57,7 +48,6 @@ class InventoryController extends Controller
             'available' => $request->available,
         ]);
 
-
-        return ['data' => $daysOfTheWeek];
+        return ['success' => true];
     }
 }

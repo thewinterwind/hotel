@@ -22,10 +22,10 @@
                     </div>
                     <div class="form-group">
                         <label for="from">From:</label>
-                        <input type="text" class="datepicker form-control" name="from" value="2017-01-01" required>
+                        <input type="text" class="datepicker form-control" name="from" required>
                         <br>
                         <label for="to">To:</label>
-                        <input type="text" class="datepicker form-control" name="to" value="2017-01-04" required>
+                        <input type="text" class="datepicker form-control" name="to" required>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -33,7 +33,8 @@
                         <label for="room_type">Refine Days:</label>
                         <div class="checkbox">
                             <div>
-                                <label><input name="day_range[]" value="1,2,3,4,5,6,7" type="checkbox" checked>All Days</label>
+                                {{-- 0 is Sunday, 6 is Saturday --}}
+                                <label><input name="day_range[]" value="0,1,2,3,4,5,6," type="checkbox" checked>All Days</label>
                             </div>
                             <div>
                                 <label><input name="day_range[]" value="1,2,3,4,5" type="checkbox">All Weekdays</label>
@@ -57,7 +58,7 @@
                                 <label><input name="day_range[]" value="6" type="checkbox">Saturdays</label>
                             </div>
                             <div>
-                                <label><input name="day_range[]" value="7" type="checkbox">Sundays</label>
+                                <label><input name="day_range[]" value="0" type="checkbox">Sundays</label>
                             </div>
                         </div>
                     </div>
@@ -81,7 +82,7 @@
             </div>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button id="submit-btn" type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
         </form>
